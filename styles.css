@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  overflow-y: scroll;
+}
+
+/* background blur overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.75);
+  z-index: -1;
+}
+
+#topPanel {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 12px;
+  margin: 20px auto 10px auto;
+  width: 90%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  pointer-events: none; /* makes it non-clickable */
+}
+
+.logo a {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+}
+
+.logo a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.titleBlock {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titleBlock h1 {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+#scoreText {
+  font-weight: 500;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+#buttonsRow {
+  display: flex;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+button {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s;
+  user-select: none;
+}
+
+button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+#clearBtn, #logoutBtn {
+  display: none;
+}
+
+#vouchesContainer {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.vouch {
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+  padding: 16px 20px;
+  color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 140px;
+  transition: background 0.3s;
+}
+
+.vouch:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.vouch h3 {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  user-select: text;
+}
+
+.stars {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: gold;
+  user-select: text;
+}
+
+.reason {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 8px;
+  user-select: text;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  text-align: right;
+  user-select: text;
+}
+
+/* Modal background overlay */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Modal content panel */
+.modal-content {
+  background: rgba(0,0,0,0.85);
+  margin: 80px auto;
+  padding: 20px 30px 30px 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"],
+.modal-content input[type="number"],
+.modal-content textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  outline: none;
+  resize: vertical;
+}
+
+.modal-content textarea {
+  min-height: 60px;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.stars-input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.stars-input button {
+  flex-grow: 1;
+  margin: 0 4px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 6px 0;
+  user-select: none;
+}
+
+.stars-input button.selected {
+  background: gold;
+  color: black;
+}
